@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurum Luxury Salon (His & Her) | Premium Unisex Salon in Kharar & Kurali</title>
+    <meta name="description" content="Transforming Beauty with Luxury and Care. Premium unisex salon offering hair, nails, makeup, skin, and lash services in Kharar and Kurali, Punjab." />
+    <link rel="icon" type="image/png" href="/aurum_official_logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/aurum_official_logo.svg" />
+    <link rel="apple-touch-icon" href="/aurum_official_logo.png" />
+    
+    <!-- Environment guard: Suppress benign WebSocket HMR errors in cloud sandbox -->
+    <script>
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event.reason && (
+          String(event.reason?.message || event.reason).includes('WebSocket') ||
+          String(event.reason?.message || event.reason).includes('closed without opened')
+        )) {
+          event.preventDefault();
+        }
+      });
+      window.addEventListener('error', function(event) {
+        if (event.message && String(event.message).includes('WebSocket')) {
+          event.preventDefault();
+        }
+      });
+    </script>
+    
+    <!-- OpenGraph & Twitter Social Cards -->
+    <meta property="og:title" content="Aurum Luxury Salon (His & Her) | Transforming Beauty with Luxury and Care" />
+    <meta property="og:description" content="Experience premium beauty and grooming services designed to make you look confident, feel beautiful, and leave feeling your best." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aurum Luxury Salon" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aurum Luxury Salon | Premium Unisex Salon" />
+    <meta name="twitter:description" content="Luxury hair, nails, makeup, skin, and lashes in Kharar & Kurali, Punjab." />
+
+    <!-- Google Fonts for Luxury Aesthetic: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Local Business Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BeautySalon",
+          "@id": "https://aurumluxurysalon.com/#kharar",
+          "name": "Aurum Luxury Salon – Kharar",
+          "alternateName": "The Aurum Luxury Unisex Salon Kharar",
+          "description": "Premium unisex beauty and grooming salon in Modern Valley, Kharar.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "First Floor, SCO-2, Modern Valley",
+            "addressLocality": "Kharar",
+            "addressRegion": "Punjab",
+            "addressCountry": "IN"
+          },
+          "telephone": "+919875847109",
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.instagram.com/theaurumluxurysalon_kharar/"
+          ]
+        },
+        {
+          "@type": "BeautySalon",
+          "@id": "https://aurumluxurysalon.com/#kurali",
+          "name": "The Aurum Luxury Unisex Salon – Kurali",
+          "description": "Premium unisex beauty and grooming salon in Kurali, Punjab.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kurali",
+            "addressRegion": "Punjab",
+            "addressCountry": "IN"
+          },
+          "priceRange": "$$",
+          "sameAs": [
+            "https://www.instagram.com/theaurumluxurysalon_kurali/"
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-[#FAF8F5] text-stone-900 antialiased font-sans selection:bg-[#0B3B95] selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap');
+      
+      .brand-serif {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 800;
+        fill: #FFFFFF;
+        font-size: 82px;
+        letter-spacing: 3px;
+      }
+      .brand-sub {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-weight: 800;
+        fill: #FFFFFF;
+        font-size: 29px;
+        letter-spacing: 6.5px;
+      }
+    </style>
+
+    <!-- Master Monogram Glyph for Aurum -->
+    <g id="official-aurum-a">
+      <!-- Right Stem with Classical Serif Foot -->
+      <path d="
+        M 522 170
+        L 527 170
+        L 638 488
+        C 644 504, 652 511, 676 512
+        L 676 522
+        L 538 522
+        L 538 512
+        C 558 510, 566 502, 560 484
+        L 547 444
+        L 520 444
+        L 520 416
+        L 538 416
+        L 508 290
+        L 522 170
+        Z
+      " />
+      
+      <!-- Flowing Teardrop Loop -->
+      <path d="
+        M 522 170
+        C 502 176, 474 200, 442 244
+        C 398 304, 352 388, 345 442
+        C 338 492, 368 524, 414 524
+        C 448 524, 482 506, 508 472
+        C 524 452, 536 432, 546 416
+        L 520 416
+        C 508 434, 492 454, 474 468
+        C 454 482, 434 486, 418 478
+        C 400 468, 392 444, 400 410
+        C 410 366, 442 292, 476 242
+        C 496 212, 514 186, 522 170
+        Z
+      " />
+
+      <!-- Horizontal Crossbar Join -->
+      <path d="
+        M 494 444
+        C 508 444, 522 434, 536 420
+        L 547 420
+        L 547 444
+        L 494 444
+        Z
+      " />
+    </g>
+  </defs>
+
+  <!-- Solid Royal Blue Circle (#002D9C) -->
+  <circle cx="500" cy="500" r="455" fill="#002D9C" />
+
+  <!-- Big Central Monogram 'A' -->
+  <use href="#official-aurum-a" fill="#FFFFFF" />
+
+  <!-- Wordmark Line: "THE AURUM" -->
+  <g transform="translate(0, 95)">
+    <!-- "THE" -->
+    <text x="360" y="560" text-anchor="end" class="brand-serif">THE</text>
+
+    <!-- Mini Brand Ligature 'A' inside "AURUM" -->
+    <use href="#official-aurum-a" transform="translate(325, 442) scale(0.225)" fill="#FFFFFF" />
+
+    <!-- "URUM" -->
+    <text x="460" y="560" text-anchor="start" class="brand-serif">URUM</text>
+
+    <!-- Subtitle: "LUXURY UNISEX SALON" -->
+    <text x="500" y="626" text-anchor="middle" class="brand-sub">LUXURY UNISEX SALON</text>
+  </g>
+</svg>

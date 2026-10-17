@@ -1,0 +1,6 @@
+{
+  "name": "Aurum Luxury Salon",
+  "description": "Transforming Beauty with Luxury and Care. Premium unisex luxury beauty and grooming salon in Kharar and Kurali, Punjab.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

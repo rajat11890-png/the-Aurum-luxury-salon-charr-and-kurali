@@ -1,0 +1,150 @@
+{
+  "entities": {
+    "Booking": {
+      "title": "Booking",
+      "description": "Salon appointment booking request submitted by customers or recorded by staff",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique booking identifier (e.g. AUR-123456)",
+          "maxLength": 64
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Customer full name",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer contact phone number",
+          "minLength": 5,
+          "maxLength": 30
+        },
+        "email": {
+          "type": "string",
+          "description": "Customer email address or empty",
+          "maxLength": 150
+        },
+        "location": {
+          "type": "string",
+          "description": "Branch location (kharar or kurali)",
+          "enum": ["kharar", "kurali"]
+        },
+        "service": {
+          "type": "string",
+          "description": "Requested salon service or ritual",
+          "maxLength": 150
+        },
+        "date": {
+          "type": "string",
+          "description": "Scheduled date (YYYY-MM-DD)",
+          "maxLength": 30
+        },
+        "time": {
+          "type": "string",
+          "description": "Scheduled time (e.g. 11:00 AM)",
+          "maxLength": 30
+        },
+        "guests": {
+          "type": "number",
+          "description": "Number of guests"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Special notes or customer preferences",
+          "maxLength": 1000
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the appointment booking",
+          "enum": ["new", "confirmed", "in_service", "completed", "cancelled"]
+        },
+        "whatsappSent": {
+          "type": "boolean",
+          "description": "Whether WhatsApp dispatch was sent"
+        },
+        "emailSent": {
+          "type": "boolean",
+          "description": "Whether email dispatch was sent"
+        },
+        "managerNotes": {
+          "type": "string",
+          "description": "Internal notes from salon manager",
+          "maxLength": 1000
+        },
+        "source": {
+          "type": "string",
+          "description": "Source of booking request",
+          "enum": ["online_request_form", "walk_in", "phone_desk"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation",
+          "maxLength": 50
+        }
+      },
+      "required": ["fullName", "phone", "location", "service", "date", "time"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Customer or client profile registering bookings and contact information",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user/client ID derived from phone or generated"
+        },
+        "fullName": {
+          "type": "string",
+          "description": "User full name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Primary phone number"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address"
+        },
+        "preferredLocation": {
+          "type": "string",
+          "description": "Preferred branch location",
+          "enum": ["kharar", "kurali"]
+        },
+        "totalBookings": {
+          "type": "number",
+          "description": "Total count of bookings placed"
+        },
+        "lastBookingDate": {
+          "type": "string",
+          "description": "Date of latest booking"
+        },
+        "lastService": {
+          "type": "string",
+          "description": "Latest ritual service requested"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Profile creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Profile last updated timestamp"
+        }
+      },
+      "required": ["id", "fullName", "phone"]
+    }
+  },
+  "firestore": {
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Stores all Aurum Luxury Salon appointments and booking requests"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user and client profiles who have submitted appointment bookings"
+    }
+  }
+}

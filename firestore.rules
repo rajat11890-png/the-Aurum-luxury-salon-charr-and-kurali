@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Connection health ping test doc
+    match /test/connection {
+      allow read: if true;
+    }
+
+    // Aurum Luxury Salon Bookings Collection
+    // Stores booking requests from website and walk-ins
+    match /bookings/{bookingId} {
+      allow read, write: if true;
+    }
+
+    // Aurum Luxury Salon Users & Client Profiles Collection
+    // Stores user profile details and booking history
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Aurum Luxury Salon Automated Notifications & Dispatch Logs
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+  }
+}
