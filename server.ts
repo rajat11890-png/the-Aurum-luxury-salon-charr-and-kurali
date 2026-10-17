@@ -625,6 +625,17 @@ app.post('/api/manager/login', (req, res) => {
 async function startServer() {
   const isProd = process.env.NODE_ENV === 'production';
 
+  // Always serve public directory for high-performance video streaming & image assets
+  app.use(express.static(path.resolve(__dirname, 'public'), {
+    maxAge: '1d',
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.mp4')) {
+        res.setHeader('Content-Type', 'video/mp4');
+        res.setHeader('Accept-Ranges', 'bytes');
+      }
+    }
+  }));
+
   if (isProd) {
     app.use(express.static(path.resolve(__dirname, 'dist')));
     app.get('*', (_req, res) => {

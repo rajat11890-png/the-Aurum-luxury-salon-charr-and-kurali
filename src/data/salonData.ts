@@ -52,8 +52,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Hair Design & Care',
     tagline: 'Precision cuts, dimensional color & transformative rituals',
     description: 'Elevate your hair with master stylists trained in contemporary trends, therapeutic nourishment, and flawless finishes.',
-    image: '/src/assets/images/aurum_hair_art_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_hair_h264.mp4',
+    image: '/images/aurum_hair_reel_cover.jpg',
+    videoSrc: '/videos/aurum_hair_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DaUL0ePMGrZ/?psln=MTFvNGpic2ZsdzVrcw==',
     items: [
       'Haircuts & Couture Reshaping',
@@ -75,8 +75,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Nail Artistry & Care',
     tagline: 'Pristine manicures, bespoke art & enduring extensions',
     description: 'Impeccable hands and feet with meticulous cuticle care, long-lasting gel extensions, and sophisticated custom nail art.',
-    image: '/src/assets/images/aurum_nails_art_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_nails_h264.mp4',
+    image: '/images/service_nail_art_1791224041811.jpg',
+    videoSrc: '/videos/aurum_nails_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DaaZJRrTn1K/?vrfl=c2hnaXp3dmllZmQ1',
     items: [
       'Luxury Manicure',
@@ -98,8 +98,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Makeup & Artistry',
     tagline: 'High-definition bridal, party & celebration glam',
     description: 'Refined artistry celebrating your individual beauty with luminous skin prep, high-end cosmetics, and bespoke styling.',
-    image: '/src/assets/images/aurum_makeup_art_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_makeup_h264.mp4',
+    image: '/images/service_bridal_makeup_1791224052013.jpg',
+    videoSrc: '/videos/aurum_makeup_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DMXkusCzuQl/?vrfl=dzBkNjV0eTU2OGI1',
     items: [
       'Bridal Makeup & Complete Styling',
@@ -120,8 +120,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Skin Therapies & Glow',
     tagline: 'Targeted facials, gentle resurfacing & skin renewal',
     description: 'Revitalize and clarify your complexion with clinical-grade facial rituals, botanical serums, and deep hydration treatments.',
-    image: '/src/assets/images/aurum_skin_art_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_skin_h264.mp4',
+    image: '/images/aurum_skin_reel_cover.jpg',
+    videoSrc: '/videos/aurum_skin_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DSReOKNkbXr/?xtok=MTBvbHNuaHdvYTlkcw==',
     items: [
       'Signature Aurum Facials',
@@ -141,8 +141,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Lash Enhancements',
     tagline: 'Fluttering extensions, gentle lifts & eye definition',
     description: 'Frame your gaze with customized lash styling, feather-light volume extensions, and nourishing lash tint treatments.',
-    image: '/src/assets/images/aurum_lashes_art_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_lashes_h264.mp4',
+    image: '/images/aurum_lashes_reel_cover.jpg',
+    videoSrc: '/videos/aurum_lashes_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DeWijC7MopV/?xtok=MWhrcTh1a2gydng1aw==',
     items: [
       'Classic Lash Extensions',
@@ -162,8 +162,8 @@ export const SALON_SERVICES: ServiceCategory[] = [
     title: 'Men\'s Luxury Grooming',
     tagline: 'Precision fades, beard sculpting & executive care',
     description: 'Dedicated his & her experience featuring classic razor detailing, therapeutic scalp massages, and executive grooming.',
-    image: '/src/assets/images/aurum_mens_grooming_optimized.gif',
-    videoSrc: '/src/assets/video/aurum_mens_h264.mp4',
+    image: '/images/aurum_mens_reel_cover.jpg',
+    videoSrc: '/videos/aurum_mens_h264.mp4',
     reelUrl: 'https://www.instagram.com/reel/DP6URhNkbpG/?xtok=MTFkMHNzMDZqeGFqcQ==',
     items: [
       'Precision Scissor & Fade Cuts',
@@ -185,7 +185,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: 'The Aurum Arched Styling Stations & Backlit Mirrors',
     category: 'interior',
     categoryLabel: 'Salon Ambience & Architecture',
-    image: '/src/assets/images/aurum_kurali_salon_interior_1.jpg',
+    image: '/images/aurum_kurali_salon_interior_1.jpg',
     locationLabel: 'The Aurum Luxury Salon',
     reelUrl: 'https://www.instagram.com/p/DLKb36Zzmdu/?exln=OTByem5zYW96MXQ='
   },
@@ -193,100 +193,106 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g-hair-reel-1',
     title: 'Aurum Signature Layered Cut & Silk Styling',
     category: 'hair',
-    categoryLabel: 'Hair Design (Live Reel)',
-    image: '/src/assets/images/aurum_hair_art_optimized.gif',
+    categoryLabel: 'Hair Design (Signature Video Reel)',
+    image: '/images/aurum_hair_reel_cover.jpg',
+    videoSrc: '/videos/aurum_hair_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DaUL0ePMGrZ/?psln=MTFvNGpic2ZsdzVrcw==',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-hair-1',
     title: 'Dimensional Balayage & Silk Blowout',
     category: 'hair',
     categoryLabel: 'Hair Styling',
-    image: '/src/assets/images/service_hair_styling_1791224030056.jpg',
+    image: '/images/service_hair_styling_1791224030056.jpg',
     locationLabel: 'Kharar & Kurali'
   },
   {
     id: 'g-nails-reel-1',
     title: 'Aurum Signature Gel Nail Art & Extensions',
     category: 'nails',
-    categoryLabel: 'Nail Artistry (Live Reel)',
-    image: '/src/assets/images/aurum_nails_art_optimized.gif',
+    categoryLabel: 'Nail Artistry (Signature Video Reel)',
+    image: '/images/service_nail_art_1791224041811.jpg',
+    videoSrc: '/videos/aurum_nails_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DaaZJRrTn1K/?vrfl=c2hnaXp3dmllZmQ1',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-nails-1',
     title: 'Champagne Gold Leaf Gel Nails',
     category: 'nails',
     categoryLabel: 'Nail Art',
-    image: '/src/assets/images/service_nail_art_1791224041811.jpg',
+    image: '/images/service_nail_art_1791224041811.jpg',
     locationLabel: 'Kharar & Kurali'
   },
   {
     id: 'g-makeup-reel-1',
     title: 'Signature Bridal & Glam Artistry',
     category: 'makeup',
-    categoryLabel: 'Makeup Artistry (Live Reel)',
-    image: '/src/assets/images/aurum_makeup_art_optimized.gif',
+    categoryLabel: 'Makeup Artistry (Signature Video Reel)',
+    image: '/images/service_bridal_makeup_1791224052013.jpg',
+    videoSrc: '/videos/aurum_makeup_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DMXkusCzuQl/?vrfl=dzBkNjV0eTU2OGI1',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-makeup-1',
     title: 'Luminous Bridal & Occasion Artistry',
     category: 'makeup',
     categoryLabel: 'Makeup Artistry',
-    image: '/src/assets/images/service_bridal_makeup_1791224052013.jpg',
+    image: '/images/service_bridal_makeup_1791224052013.jpg',
     locationLabel: 'Kharar & Kurali'
   },
   {
     id: 'g-skin-reel-1',
     title: 'Aurum Radiance Glow & Skin Therapy',
     category: 'skin',
-    categoryLabel: 'Skin Therapies & Glow (Live Reel)',
-    image: '/src/assets/images/aurum_skin_art_optimized.gif',
+    categoryLabel: 'Skin Therapies & Glow (Signature Video Reel)',
+    image: '/images/aurum_skin_reel_cover.jpg',
+    videoSrc: '/videos/aurum_skin_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DSReOKNkbXr/?xtok=MTBvbHNuaHdvYTlkcw==',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-lashes-reel-1',
     title: 'Aurum Signature Lash Enhancement & Eye Framing',
     category: 'lashes',
-    categoryLabel: 'Lash Enhancements (Live Reel)',
-    image: '/src/assets/images/aurum_lashes_art_optimized.gif',
+    categoryLabel: 'Lash Enhancements (Signature Video Reel)',
+    image: '/images/aurum_lashes_reel_cover.jpg',
+    videoSrc: '/videos/aurum_lashes_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DeWijC7MopV/?xtok=MWhrcTh1a2gydng1aw==',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-lashes-photo-1',
     title: 'Curated Featherlight Volume Lashes & Eye Definition',
     category: 'lashes',
     categoryLabel: 'Lash Styling',
-    image: '/src/assets/images/aurum_lash_enhancement.jpg',
+    image: '/images/aurum_lash_enhancement.jpg',
     locationLabel: 'Kharar & Kurali'
   },
   {
     id: 'g-mens-reel-1',
     title: 'Aurum Executive Haircut & Beard Sculpting',
     category: 'mens',
-    categoryLabel: 'Men\'s Grooming (Live Reel)',
-    image: '/src/assets/images/aurum_mens_grooming_optimized.gif',
+    categoryLabel: 'Men\'s Grooming (Signature Video Reel)',
+    image: '/images/aurum_mens_reel_cover.jpg',
+    videoSrc: '/videos/aurum_mens_h264.mp4',
     locationLabel: 'Official Instagram Reel',
     reelUrl: 'https://www.instagram.com/reel/DP6URhNkbpG/?xtok=MTFkMHNzMDZqeGFqcQ==',
-    isVideoGif: true
+    isVideo: true
   },
   {
     id: 'g-interior-2',
     title: 'Bespoke Arched Mirrors & Velvet Cognac Styling Stations',
     category: 'interior',
     categoryLabel: 'Salon Ambience & Architecture',
-    image: '/src/assets/images/aurum_kurali_salon_interior_2.jpg',
+    image: '/images/aurum_kurali_salon_interior_2.jpg',
     locationLabel: 'The Aurum Luxury Salon',
     reelUrl: 'https://www.instagram.com/p/DLKb36Zzmdu/?exln=OTByem5zYW96MXQ='
   },
@@ -295,7 +301,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Private Treatment Lounge & Backwash Suite',
     category: 'interior',
     categoryLabel: 'Salon Ambience & Architecture',
-    image: '/src/assets/images/aurum_kurali_salon_interior_3.jpg',
+    image: '/images/aurum_kurali_salon_interior_3.jpg',
     locationLabel: 'The Aurum Luxury Salon',
     reelUrl: 'https://www.instagram.com/p/DLKb36Zzmdu/?exln=OTByem5zYW96MXQ='
   },
@@ -304,7 +310,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Grand Salon Floor & Statement Chandelier Ambience',
     category: 'interior',
     categoryLabel: 'Salon Ambience & Architecture',
-    image: '/src/assets/images/aurum_kurali_salon_interior_4.jpg',
+    image: '/images/aurum_kurali_salon_interior_4.jpg',
     locationLabel: 'The Aurum Luxury Salon',
     reelUrl: 'https://www.instagram.com/p/DLKb36Zzmdu/?exln=OTByem5zYW96MXQ='
   }

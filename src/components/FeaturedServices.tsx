@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowUpRight, Instagram, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Instagram, ExternalLink, Sparkles, Play } from 'lucide-react';
 import { ServiceCategory } from '../types';
 import { SALON_SERVICES } from '../data/salonData';
+import { BackgroundVideo } from './BackgroundVideo';
 
 interface FeaturedServicesProps {
   onSelectService: (serviceId: string) => void;
@@ -49,26 +50,36 @@ export const FeaturedServices: React.FC<FeaturedServicesProps> = ({
               onClick={() => onSelectService(service.id)}
               className="group relative bg-[#FAF8F5] rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer w-[80vw] max-w-[290px] sm:w-auto shrink-0 snap-center"
             >
-              {/* Image Frame */}
+              {/* Image / Video Frame */}
               <div className="relative h-60 sm:h-72 overflow-hidden bg-stone-900">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className={`w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out ${
-                    service.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
-                  }`}
-                  referrerPolicy="no-referrer"
-                />
+                {service.videoSrc ? (
+                  <BackgroundVideo
+                    src={service.videoSrc}
+                    poster={service.image}
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out ${
+                      service.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                    }`}
+                  />
+                ) : (
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className={`w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out ${
+                      service.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                    }`}
+                    referrerPolicy="no-referrer"
+                  />
+                )}
                 
                 {/* Vignette Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
-                {/* Live GIF / Reel Badge for featured services */}
-                {(service.reelUrl || service.id === 'nails' || service.id === 'makeup' || service.id === 'lashes') && (
-                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#E5C568]/60 text-white shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-[#E5C568] animate-pulse" />
+                {/* Video Reel Badge for featured services */}
+                {service.videoSrc && (
+                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#E5C568]/60 text-white shadow-lg pointer-events-none">
+                    <Play className="w-2.5 h-2.5 fill-[#E5C568] text-[#E5C568]" />
                     <span className="text-[9px] font-bold tracking-widest uppercase text-[#E5C568]">
-                      Live Reel GIF
+                      Video Reel
                     </span>
                   </div>
                 )}

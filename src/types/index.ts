@@ -144,7 +144,9 @@ export interface GalleryItem {
   category: ServiceCategoryId | 'interior';
   categoryLabel: string;
   image: string;
+  videoSrc?: string;
   locationLabel: string;
   reelUrl?: string;
+  isVideo?: boolean;
   isVideoGif?: boolean;
 }

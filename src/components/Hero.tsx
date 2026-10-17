@@ -1,16 +1,28 @@
-import React from 'react';
-import { Calendar, ArrowRight, MapPin, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calendar, ArrowRight, MapPin, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import { AurumLogo } from './AurumLogo';
+import { BackgroundVideo } from './BackgroundVideo';
 
 interface HeroProps {
   onOpenBooking: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
+  const [isMuted, setIsMuted] = useState(true);
+
   return (
     <section id="home" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      {/* Background ambient luxury video texture echoing the living salon atmosphere */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.06] mix-blend-multiply">
+        <BackgroundVideo
+          src="/videos/aurum_salon_tour.mp4"
+          poster="/images/aurum_kurali_salon_interior_1.jpg"
+          className="w-full h-full object-cover filter blur-[2px] scale-105"
+        />
+      </div>
+
       {/* Background ambient luxury gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F5EFEB]/70 via-[#FAF8F5] to-[#FAF8F5] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F5EFEB]/70 via-[#FAF8F5]/90 to-[#FAF8F5] pointer-events-none" />
 
       {/* Subtle architectural arched background shape echoing the salon's signature arched mirrors */}
       <div className="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-[#E5C568]/10 blur-3xl pointer-events-none" />
@@ -95,26 +107,49 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               
               {/* Main Arched Visual Box */}
               <div className="relative rounded-t-[100px] sm:rounded-t-[140px] rounded-b-2xl overflow-hidden shadow-xl sm:shadow-2xl bg-stone-900 border-2 border-[#C59B27]/60 group">
-                <img
-                  src="/src/assets/images/aurum_kurali_salon_interior_1.jpg"
-                  alt="The Aurum Luxury Unisex Salon interior with arched backlit mirrors, cognac leather styling chairs, and ambient chandeliers"
+                <BackgroundVideo
+                  src="/videos/aurum_salon_tour.mp4"
+                  poster="/images/aurum_kurali_salon_interior_1.jpg"
+                  isMuted={isMuted}
                   className="w-full h-[320px] sm:h-[460px] lg:h-[520px] object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                  referrerPolicy="no-referrer"
+                  aria-label="The Aurum Luxury Unisex Salon Atmosphere Tour Video"
                 />
                 
                 {/* Subtle luxury vignette gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07255E]/85 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07255E]/90 via-transparent to-black/25 pointer-events-none" />
 
-                {/* Floating Brand Badge on the visual */}
-                <div className="absolute top-4 right-4 sm:top-5 sm:right-5 bg-white/90 backdrop-blur-md p-1.5 sm:p-2 rounded-full shadow-lg border border-stone-200">
-                  <AurumLogo size="sm" variant="badge" className="w-8 h-8 sm:w-10 sm:h-10" />
+                {/* Top Controls: Sound toggle & Floating Brand Badge */}
+                <div className="absolute top-4 left-4 right-4 sm:top-5 sm:left-5 sm:right-5 flex items-center justify-between pointer-events-auto">
+                  <button
+                    type="button"
+                    onClick={() => setIsMuted(!isMuted)}
+                    className="min-h-[36px] min-w-[36px] px-3 py-1.5 rounded-full bg-black/65 hover:bg-black/85 backdrop-blur-md border border-white/20 text-white flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                    title={isMuted ? 'Turn Sound On' : 'Mute Video'}
+                    aria-label={isMuted ? 'Turn Sound On' : 'Mute Video'}
+                  >
+                    {isMuted ? (
+                      <>
+                        <VolumeX className="w-3.5 h-3.5 text-stone-300" />
+                        <span className="hidden xs:inline">Sound Off</span>
+                      </>
+                    ) : (
+                      <>
+                        <Volume2 className="w-3.5 h-3.5 text-[#E5C568]" />
+                        <span className="text-[#E5C568] hidden xs:inline">Sound On</span>
+                      </>
+                    )}
+                  </button>
+
+                  <div className="bg-white/90 backdrop-blur-md p-1.5 sm:p-2 rounded-full shadow-lg border border-stone-200">
+                    <AurumLogo size="sm" variant="badge" className="w-8 h-8 sm:w-10 sm:h-10" />
+                  </div>
                 </div>
 
                 {/* Bottom caption overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white pointer-events-none">
                   <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold tracking-[0.2em] uppercase text-[#E5C568] mb-0.5 sm:mb-1">
                     <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    <span>Real Salon Atmosphere</span>
+                    <span>Real Salon Atmosphere Video</span>
                   </div>
                   <h3 className="font-serif-luxury text-lg sm:text-xl font-bold text-white tracking-wide leading-snug">
                     Arched Mirrors · Cognac Leather · Brass Accents

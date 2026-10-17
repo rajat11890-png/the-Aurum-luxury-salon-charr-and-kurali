@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { GALLERY_ITEMS, SALON_LOCATIONS } from '../data/salonData';
-import { Instagram, Eye, ExternalLink, X } from 'lucide-react';
+import { Instagram, Eye, ExternalLink, X, Play } from 'lucide-react';
 import { GalleryItem } from '../types';
+import { BackgroundVideo } from './BackgroundVideo';
 
 export const GallerySection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -85,25 +86,35 @@ export const GallerySection: React.FC = () => {
               onClick={() => setActiveLightboxItem(item)}
               className="group relative h-72 sm:h-96 rounded-2xl overflow-hidden bg-stone-900 border border-stone-200 shadow-sm cursor-pointer"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
-                className={`w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out ${
-                  item.category === 'lashes' ? 'object-[center_28%]' : 'object-center'
-                }`}
-                referrerPolicy="no-referrer"
-              />
+              {item.isVideo && item.videoSrc ? (
+                <BackgroundVideo
+                  src={item.videoSrc}
+                  poster={item.image}
+                  className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out ${
+                    item.category === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                  }`}
+                />
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  className={`w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out ${
+                    item.category === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                  }`}
+                  referrerPolicy="no-referrer"
+                />
+              )}
 
               {/* Scrim Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity pointer-events-none" />
 
-              {/* Live Reel Badge */}
-              {(item.isVideoGif || item.id === 'g-nails-reel-1') && (
-                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#E5C568]/60 text-white shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-[#E5C568] animate-pulse" />
+              {/* Video Reel Badge */}
+              {item.isVideo && (
+                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#E5C568]/60 text-white shadow-lg pointer-events-none">
+                  <Play className="w-2.5 h-2.5 fill-[#E5C568] text-[#E5C568]" />
                   <span className="text-[9px] font-bold tracking-widest uppercase text-[#E5C568]">
-                    Live Reel GIF
+                    Video Reel
                   </span>
                 </div>
               )}
@@ -165,12 +176,23 @@ export const GallerySection: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
 
-            <img
-              src={activeLightboxItem.image}
-              alt={activeLightboxItem.title}
-              className="w-full max-h-[70vh] object-contain bg-black"
-              referrerPolicy="no-referrer"
-            />
+            {activeLightboxItem.isVideo && activeLightboxItem.videoSrc ? (
+              <video
+                src={activeLightboxItem.videoSrc}
+                poster={activeLightboxItem.image}
+                autoPlay
+                controls
+                playsInline
+                className="w-full max-h-[70vh] object-contain bg-black"
+              />
+            ) : (
+              <img
+                src={activeLightboxItem.image}
+                alt={activeLightboxItem.title}
+                className="w-full max-h-[70vh] object-contain bg-black"
+                referrerPolicy="no-referrer"
+              />
+            )}
 
             <div className="p-6 bg-stone-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>

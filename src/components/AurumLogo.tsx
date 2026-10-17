@@ -27,14 +27,14 @@ export const AurumLogo: React.FC<AurumLogoProps> = ({
   const BadgeIcon = () => (
     <div className="relative w-full h-full select-none">
       <img
-        src="/src/assets/images/aurum_official_logo.png"
+        src="/aurum_official_logo.png"
         alt="The Aurum Luxury Unisex Salon Official Logo"
         className="w-full h-full object-contain rounded-full drop-shadow-md pointer-events-none"
         referrerPolicy="no-referrer"
         onError={(e) => {
           // Fallback to SVG asset if image load fails
           const target = e.currentTarget;
-          target.src = '/src/assets/images/aurum_official_logo.svg';
+          target.src = '/aurum_official_logo.svg';
         }}
       />
     </div>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { SALON_SERVICES } from '../data/salonData';
-import { Calendar, HelpCircle, Check, Sparkles, Instagram, ExternalLink } from 'lucide-react';
+import { Calendar, HelpCircle, Check, Sparkles, Instagram, ExternalLink, Play, Volume2, VolumeX } from 'lucide-react';
 import { ServiceCategory } from '../types';
+import { BackgroundVideo } from './BackgroundVideo';
 
 interface ServicesSectionProps {
   onOpenBooking: (locationPref?: 'kharar' | 'kurali', serviceName?: string) => void;
@@ -12,6 +13,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   onOpenBooking,
 }) => {
   const [activeTab, setActiveTab] = useState<string>('hair');
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [enquiryModalService, setEnquiryModalService] = useState<string | null>(null);
 
   const currentCategory = SALON_SERVICES.find((s) => s.id === activeTab) || SALON_SERVICES[0];
@@ -62,45 +64,77 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12">
             
             {/* Visual Column */}
-            <div className="lg:col-span-5 relative h-64 sm:h-96 lg:h-auto min-h-[280px] sm:min-h-[380px] bg-stone-900 overflow-hidden group">
-              <img
-                src={currentCategory.image}
-                alt={currentCategory.title}
-                className={`w-full h-full object-cover ${
-                  currentCategory.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
-                }`}
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="lg:col-span-5 relative h-72 sm:h-96 lg:h-auto min-h-[300px] sm:min-h-[420px] bg-stone-900 overflow-hidden group">
+              {currentCategory.videoSrc ? (
+                <BackgroundVideo
+                  key={currentCategory.videoSrc}
+                  src={currentCategory.videoSrc}
+                  poster={currentCategory.image}
+                  isMuted={isVideoMuted}
+                  className={`w-full h-full object-cover ${
+                    currentCategory.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                  }`}
+                />
+              ) : (
+                <img
+                  src={currentCategory.image}
+                  alt={currentCategory.title}
+                  className={`w-full h-full object-cover ${
+                    currentCategory.id === 'lashes' ? 'object-[center_28%]' : 'object-center'
+                  }`}
+                  referrerPolicy="no-referrer"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
               
-              {/* Special Badges for Services with Reel GIF */}
-              {(currentCategory.reelUrl || currentCategory.id === 'nails' || currentCategory.id === 'makeup' || currentCategory.id === 'lashes') && (
-                <>
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#E5C568]/50 text-white shadow-lg">
-                    <span className="w-2 h-2 rounded-full bg-[#E5C568] animate-pulse" />
+              {/* Badges and actions */}
+              <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
+                {currentCategory.videoSrc ? (
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#E5C568]/60 text-white shadow-lg pointer-events-none">
+                    <Play className="w-2.5 h-2.5 fill-[#E5C568] text-[#E5C568]" />
                     <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#E5C568]">
-                      Live Reel GIF
+                      Signature Video Reel
                     </span>
                   </div>
+                ) : (
+                  <div />
+                )}
+
+                <div className="flex items-center gap-2">
+                  {currentCategory.videoSrc && (
+                    <button
+                      type="button"
+                      onClick={() => setIsVideoMuted(!isVideoMuted)}
+                      className="min-h-[34px] min-w-[34px] flex items-center justify-center rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md border border-white/20 text-white transition-all shadow-md active:scale-95 cursor-pointer"
+                      title={isVideoMuted ? 'Unmute video sound' : 'Mute video sound'}
+                      aria-label={isVideoMuted ? 'Unmute video sound' : 'Mute video sound'}
+                    >
+                      {isVideoMuted ? (
+                        <VolumeX className="w-3.5 h-3.5 text-stone-300" />
+                      ) : (
+                        <Volume2 className="w-3.5 h-3.5 text-[#E5C568]" />
+                      )}
+                    </button>
+                  )}
 
                   {currentCategory.reelUrl && (
                     <a
                       href={currentCategory.reelUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute top-4 right-4 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 hover:bg-[#0B3B95] active:scale-95 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider transition-all shadow-lg"
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/75 hover:bg-[#0B3B95] active:scale-95 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider transition-all shadow-lg"
                     >
                       <Instagram className="w-3.5 h-3.5 text-[#E5C568]" />
-                      <span>Watch on Instagram</span>
+                      <span>Reel</span>
                       <ExternalLink className="w-2.5 h-2.5 opacity-70" />
                     </a>
                   )}
-                </>
-              )}
+                </div>
+              </div>
 
-              <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white">
+              <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
                 <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-[#E5C568]">
-                  {currentCategory.reelUrl ? 'Signature Craft Spotlight' : 'Category Spotlight'}
+                  {currentCategory.videoSrc ? 'Signature Craft Spotlight' : 'Category Spotlight'}
                 </span>
                 <h3 className="font-serif-luxury text-xl sm:text-3xl font-bold text-white mt-1">
                   {currentCategory.title}

@@ -20,6 +20,22 @@ export const SalonVideoPlayer: React.FC<SalonVideoPlayerProps> = ({ className = 
     const video = videoRef.current;
     if (!video) return;
 
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', 'true');
+    video.setAttribute('webkit-playsinline', 'true');
+
+    const tryPlay = () => {
+      if (video.paused) {
+        video.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    };
+
+    tryPlay();
+    video.addEventListener('canplay', tryPlay);
+    video.addEventListener('loadeddata', tryPlay);
+
     const updateProgress = () => {
       if (video.duration) {
         setProgress((video.currentTime / video.duration) * 100);
@@ -27,7 +43,11 @@ export const SalonVideoPlayer: React.FC<SalonVideoPlayerProps> = ({ className = 
     };
 
     video.addEventListener('timeupdate', updateProgress);
-    return () => video.removeEventListener('timeupdate', updateProgress);
+    return () => {
+      video.removeEventListener('canplay', tryPlay);
+      video.removeEventListener('loadeddata', tryPlay);
+      video.removeEventListener('timeupdate', updateProgress);
+    };
   }, []);
 
   const togglePlay = () => {
@@ -66,11 +86,13 @@ export const SalonVideoPlayer: React.FC<SalonVideoPlayerProps> = ({ className = 
         {/* Native HTML5 Video Element */}
         <video
           ref={videoRef}
-          src={salonTourVideo}
+          src={salonTourVideo || '/videos/aurum_salon_tour.mp4'}
+          poster="/images/aurum_kurali_salon_interior_1.jpg"
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           className="w-full h-[480px] sm:h-[540px] object-cover object-center cursor-pointer bg-stone-900"
           onClick={togglePlay}
           aria-label="Aurum Luxury Salon Atmosphere & Tour Video"

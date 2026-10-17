@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, Instagram, Sparkles } from 'lucide-react';
 import { AurumLogo } from './AurumLogo';
 import { SALON_LOCATIONS } from '../data/salonData';
+import { BackgroundVideo } from './BackgroundVideo';
 
 interface CallToActionProps {
   onOpenBooking: () => void;
@@ -10,9 +11,19 @@ interface CallToActionProps {
 export const CallToAction: React.FC<CallToActionProps> = ({ onOpenBooking }) => {
   return (
     <section className="relative py-24 md:py-32 bg-[#07255E] text-white overflow-hidden">
+      {/* Ambient background salon tour video */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <BackgroundVideo
+          src="/videos/aurum_salon_tour.mp4"
+          poster="/images/aurum_kurali_salon_interior_1.jpg"
+          className="w-full h-full object-cover filter blur-[1px] scale-105"
+        />
+        <div className="absolute inset-0 bg-[#07255E]/85 mix-blend-multiply" />
+      </div>
+
       {/* Background radial gold glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#0B3B95]/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E5C568]/10 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#E5C568]/15 rounded-full blur-2xl pointer-events-none" />
 
       {/* Decorative arched framing line */}
       <div className="absolute inset-x-8 inset-y-8 rounded-3xl border border-white/10 pointer-events-none hidden md:block" />

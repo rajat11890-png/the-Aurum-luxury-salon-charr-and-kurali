@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, MapPin, Users, CheckCircle2, MessageCircle, Phone, Sparkles, Mail, ExternalLink, Eye, Loader2, AlertCircle } from 'lucide-react';
+import { X, Calendar, Clock, MapPin, Users, CheckCircle2, MessageCircle, Phone, Sparkles, Mail, ExternalLink, Eye, Loader2, AlertCircle, Play } from 'lucide-react';
 import { SalonLocationId, BookingFormData, BookingRecord } from '../types';
 import { SALON_LOCATIONS, SALON_CONTACT_CONFIG } from '../data/salonData';
 import { bookingService } from '../services/bookingService';
 import { AurumLogo } from './AurumLogo';
+import { BackgroundVideo } from './BackgroundVideo';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -342,21 +343,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   ))}
                 </select>
 
-                {/* Animated Live Reel GIF Callout when Hair is selected */}
+                {/* Video Reel Callout when Hair is selected */}
                 {formData.service === 'Hair' && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_hair_art_optimized.gif"
-                        alt="Hair Design transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_hair_h264.mp4"
+                        poster="/images/aurum_hair_reel_cover.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Bespoke Hair Design &amp; Layered Cuts</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
@@ -366,21 +367,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 )}
 
-                {/* Animated Live Reel GIF Callout when Nails is selected */}
+                {/* Video Reel Callout when Nails is selected */}
                 {formData.service === 'Nails' && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_nails_art_optimized.gif"
-                        alt="Nail Art transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_nails_h264.mp4"
+                        poster="/images/service_nail_art_1791224041811.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Bespoke Nail Art &amp; Gel Extensions</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
@@ -390,21 +391,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 )}
 
-                {/* Animated Live Reel GIF Callout when Makeup is selected */}
+                {/* Video Reel Callout when Makeup is selected */}
                 {(formData.service === 'Makeup' || formData.service === 'Bridal Package') && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_makeup_art_optimized.gif"
-                        alt="Makeup & Artistry transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_makeup_h264.mp4"
+                        poster="/images/service_bridal_makeup_1791224052013.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Bespoke Makeup &amp; Bridal Glam</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
@@ -414,21 +415,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 )}
 
-                {/* Animated Live Reel GIF Callout when Skin is selected */}
+                {/* Video Reel Callout when Skin is selected */}
                 {(formData.service === 'Skin' || formData.service === 'Skin Therapies & Glow') && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_skin_art_optimized.gif"
-                        alt="Skin Therapies transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_skin_h264.mp4"
+                        poster="/images/aurum_skin_reel_cover.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Signature Skin Therapies &amp; Glow</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
@@ -438,21 +439,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 )}
 
-                {/* Animated Live Reel GIF Callout when Lashes is selected */}
+                {/* Video Reel Callout when Lashes is selected */}
                 {(formData.service === 'Lashes' || formData.service === 'Lash Enhancements') && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_lashes_art_optimized.gif"
-                        alt="Lash Enhancement transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_lashes_h264.mp4"
+                        poster="/images/aurum_lashes_reel_cover.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Bespoke Lash Enhancements &amp; Volume</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
@@ -462,21 +463,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 )}
 
-                {/* Animated Live Reel GIF Callout when Men's Grooming is selected */}
+                {/* Video Reel Callout when Men's Grooming is selected */}
                 {formData.service === "Men's Grooming" && (
                   <div className="mt-2.5 p-3 rounded-xl bg-[#07255E]/5 border border-[#C59B27]/40 flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm">
-                      <img
-                        src="/src/assets/images/aurum_mens_grooming_optimized.gif"
-                        alt="Men's Luxury Grooming transformation"
+                    <div className="w-12 h-12 rounded-lg overflow-hidden border border-[#C59B27]/50 shrink-0 bg-stone-900 shadow-sm relative">
+                      <BackgroundVideo
+                        src="/videos/aurum_mens_h264.mp4"
+                        poster="/images/aurum_mens_reel_cover.jpg"
                         className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-bold text-[#07255E] flex items-center gap-1.5">
                         <span>Executive Haircut &amp; Beard Sculpting</span>
-                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40">
-                          Live Reel GIF
+                        <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#E5C568]/20 text-[#85630d] font-bold uppercase tracking-wider border border-[#E5C568]/40 flex items-center gap-1">
+                          <Play className="w-2 h-2 fill-current" /> Video Reel
                         </span>
                       </div>
                       <p className="text-[11px] text-stone-600 font-light truncate">
